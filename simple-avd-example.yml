@@ -1,7 +1,7 @@
-- hosts: AVD2_FABRIC
+- hosts: AtlantaSpines
   gather_facts: no
   tasks:
-    
+
     - name: generate device intended config and documention
       import_role:
          name: arista.avd.eos_cli_config_gen

@@ -1,34 +1,34 @@
-# AVD with eAPI deployment
+# A simple ansible-avd example
 
-![](medias/topology.png)
 
-## Information
 
-- [EVE NG Topology](medias/eve-topology.zip)
+## What are we doing here?
 
-### Authentication:
-  - Username: ansible
-  - Password: ansible
+- Building configuration for a device that is running BGP
+- Pushing that configuration file to the device via eAPI.
 
-### Topology Information:
+## Building Blocks
 
-#### Subnet allocation:
+### The Inventory File
 
-- Underlay:  172.31.255.0/24
-- Loopback EVPN Control Plane: 192.168.255.0/24
-- Loopback for VTEP: 192.168.254.0/24
-- MLAG Subnet: 10.255.251.0/24
-- MLAG Peer: 10.255.252.0/24
+- In this file you specify what hosts you want the playbook to run on. You can also define an hierarchical structure.
+- For the example here, I have a group called AtlantaDC. Under this I have two more groups, namely, AtlantaSpines and AtlantaLeafs. The AtlantaSpines has one device while the AtlantaLeafs group has two.
+- In this example, I am running my playbook on AtlantaSpines i.e. the ghb265 device.
 
-#### Tenants definition:
 
-- __Tenant A__
-  - _Project 01_
-    - PR01-DMZ --> vlan `110` / `10.1.10.0/24`
-    - PR01-TRUST --> vlan `111` / `10.1.11.0/24`
-  - _Project 02_
-    - PR02-DMZ --> vlan `112` / `10.1.12.0/24`
-- __Tenant B__
-  - _Pure L2VLAN_
-    - B-ELAN-201 --> vlan `201` / `10.2.1.0/24`
-# simple-avd-example
+``---
+Tenant:
+  children:
+    AtlantaDC:
+      children:
+        AtlantaSpines:
+          hosts:
+            ghb265.sjc.aristanetworks.com:
+              ansible_port: 443
+        AtlantaLeafs:
+          hosts:
+            LEAF1.sjc.aristanetworks.com:
+              ansible_port: 443
+            LEAF2.sjc.aristanetworks.com:
+              ansible_port: 443
+``
