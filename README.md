@@ -53,6 +53,24 @@ Tenant:
 
 Under the *intended>structured_configs* directory we have to specify the variables for the individual devices. These variables are used by our playbook to feed into jinja2 templates and generate CLI configuration. The generated config is stored in the *intended>configs* directory.
 
+The format is YAML. You define the key:value pairs needed for your deployment. The jinja2 template the role uses calls out these variables using the keys. Pls use the exact variable names or keys defined [here](https://github.com/aristanetworks/ansible-avd/tree/devel/ansible_collections/arista/avd/roles/eos_cli_config_gen).
+
+A snippet of BGP variables we have defined:
+
+```yaml
+router_bgp:
+  as: 65001
+  router_id: 192.168.255.1
+  bgp_defaults:
+    - no bgp default ipv4-unicast
+    - distance bgp 20 200 200
+    - graceful-restart restart-time 300
+    - graceful-restart
+    - maximum-paths 2 ecmp 2    
+```    
+
+
+
 More info about this can be found [here](https://github.com/aristanetworks/ansible-avd/tree/devel/ansible_collections/arista/avd/roles/eos_cli_config_gen)
 
 ### The playbook
