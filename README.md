@@ -31,7 +31,7 @@ This role basically uses the [eos_config](https://docs.ansible.com/ansible/lates
 - For the example here, I have a group called AtlantaDC. Under this I have two more groups, namely, AtlantaSpines and AtlantaLeafs. The AtlantaSpines has one device while the AtlantaLeafs group has two.
 - In this example, I am running my playbook only AtlantaSpines i.e. the *ghb265.sjc.aristanetworks.com* device.
 
-```
+```yaml
 ---
 Tenant:
   children:
@@ -53,7 +53,7 @@ Tenant:
 
 Under the *intended>structured_configs* directory we have to specify the variables for the individual devices. These variables are used by our playbook to feed into jinja2 templates and generate CLI configuration. The generated config is stored in the *intended>configs* directory.
 
-More info about this can be found here: https://github.com/aristanetworks/ansible-avd/tree/devel/ansible_collections/arista/avd/roles/eos_cli_config_gen
+More info about this can be found [here](https://github.com/aristanetworks/ansible-avd/tree/devel/ansible_collections/arista/avd/roles/eos_cli_config_gen)
 
 ### The playbook
 
