@@ -16,7 +16,8 @@
 - In this example, I am running my playbook on AtlantaSpines i.e. the ghb265 device.
 
 
-``---
+```
+---
 Tenant:
   children:
     AtlantaDC:
@@ -31,4 +32,4 @@ Tenant:
               ansible_port: 443
             LEAF2.sjc.aristanetworks.com:
               ansible_port: 443
-``
+```
