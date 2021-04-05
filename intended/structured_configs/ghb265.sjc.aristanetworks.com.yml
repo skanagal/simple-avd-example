@@ -71,7 +71,7 @@ local_users:
   cvpadmin:
     privilege: 15
     role: network-admin
-    sha512_password: $6$HqE9Z2lOQpDh4Gg.$VZxPy.4N0KfotDRW0YjwnKTm0QkmQWKzxdjgxCndcjIn4GVDSLpcDxgmg1NSrcZu20ZvqjW9rgEEmS/WqcVOZ1
+    sha512_password: arista
 
 static_routes:
   - destination_address_prefix: 10.80.0.0/12
